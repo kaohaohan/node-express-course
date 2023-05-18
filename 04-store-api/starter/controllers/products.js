@@ -1,13 +1,12 @@
-const Product = require('../models/product')
-
+const Product = require("../models/product");
 
 //查找資料
 const getAllProductsStatic = async (req, res) => {
-  
-  const Products = await Product.find({
-     name:'vase table' })
-  res.status(200).json({ Products, nbHits: Products.length });
-}
+  const products = await product.find({
+    name: "vase table",
+  });
+  res.status(200).json({ products, nbHits: products.length });
+};
 
 //python 表達式
 ///queryObject['featured'] = True if featured == 'true' else False
@@ -32,8 +31,8 @@ const getAllProducts = async (req, res) => {
     queryObject.name = name
   }
   console.log(queryObject)
-  const products = await Product.find(queryObject)
-  res.status(200).json({ products, nbHits: products.length });
+  const products = await Product.find(req.query);
+  res.status(200).json({ products, nbHits: Products.length });
 };
 module.exports = {
   getAllProductsStatic,
